@@ -11,9 +11,9 @@ url:
 
 # Set to '' in case of hosting on GitHub pages,
 # i.e. `http://<username>.github.io`
-baseurl:             ''
+baseurl:'http://youngguncho.github.io'
 
-title:               Hydejack
+title: YG blog
 
 # Pagination
 paginate:            5
