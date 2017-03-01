@@ -10,22 +10,22 @@ tags: [jekyll]
 우선 기본 정리만
 
 ### 루비, 지킬 설치
-~~~
+```
 sudo apt-get update
 sudo apt-get install ruby-full
 sudo gem install jekyll
-~~~
+```
 
 ### 블로그를 생성할 repository clone
-~~~
+```
 git clone https://github.com/<username>/<username>.github.io.git 
-~~~
+```
 
 ### Jekyll 기본 테마 설정
 Repository root 폴더에서 jekyll 명령어를 통한 기본 테마 설정, _config, Gemfile등이 생성된다.
-~~~
+```
 jekyll new .
-~~~
+```
 
 ### Theme 적용 
 	여기선 지킬 테마 중 [Hydejacked](https://github.com/qwtel/hydejack)를 이용하여 테마를 셋업.
@@ -40,6 +40,7 @@ jekyll new .
 ### Gemfile 셋업
 	위에서 언급한 dependency를 설치할 경우에는 Gemfile에서 일괄적으로 설치하도록 하는 것이 간편하다. (뒤의 jekyll serve에서도 마찬가지)
     Gemfile에서 플러그인으로 명시된 부분이 있는데 (line 22: group :jekyll_plugins do) 해당하는 부분에 dependency 들을 아래와 같이 명시한다. 
+    
 ```
 # If you have any plugins, put them here!
 group :jekyll_plugins do
