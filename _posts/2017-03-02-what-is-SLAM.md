@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Initial Jekyll setup!"
+title:  "What is SLAM?"
 date:  March 2, 2017 12:38 AM
 tags: [SLAM]
 description: >
