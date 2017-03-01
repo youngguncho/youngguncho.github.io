@@ -25,3 +25,10 @@ jekyll:
   color: '#949667'
   description: >
     Jekyll is a static site generator, an open-source tool for creating simple yet powerful websites of all shapes and sizes.
+    
+SLAM:
+  name: SLAM
+  color: '#949667'
+  description: >
+    Simultaneous Localization and Mapping.
+
