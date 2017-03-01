@@ -32,8 +32,3 @@ SLAM:
   description: >
     Simultaneous Localization and Mapping.
 
-Dehazing:
-  name: Dehazing
-  color: '#949667'
-  description: >
-    Image Enhancement.

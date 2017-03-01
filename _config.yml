@@ -21,13 +21,15 @@ paginate_path:       '/page-:num/'
 
 # Markdown enabled, however don't use more than one paragraph (enforced by `>`)
 description:         >
- 
+  A pretentious two-column [Jekyll](http://jekyllrb.com/) theme, stolen by [`@qwtel`{:style="background: rgba(255, 255, 255, 0.15)"}](https://twitter.com/qwtel)
+  from [Hyde](http://hyde.getpoole.com).
+  You could say it was.. [hydejacked](http://media3.giphy.com/media/makedRIckZBW8/giphy.gif).
 
 # The tags listed as entries in the sidebar
-sidebar_tags:        [jekyll, SLAM, Dehazing]
+sidebar_tags:        [jekyll, hyde]
 
 # Fallback image and color if not overwritten for tag or post
-# image:               /hydejack/public/img/nap.jpg
+image:               /hydejack/public/img/nap.jpg
 color:               '#A85641'
 
 # Fonts
@@ -37,15 +39,18 @@ load_google_fonts:   'Roboto+Slab:700|PT+Serif:400,400italic,700,700italic'
 
 # About yourself
 author:
-  name:              'Brian Younggun Cho'
+  name:              'Florian Klampfer'
 
   # This photo will be used in the about section
-  photo:             images/main/yg_profile.jpg
-  # photo2x:           http://qwtel.com/public/img/flo@2x.jpg
+  photo:             http://qwtel.com/public/img/flo.jpg
+  photo2x:           http://qwtel.com/public/img/flo@2x.jpg
 
   # Markdown enabled, can use multiple paragraphs (enabled by `|`)
   about:             |
-   Ph. D Student
+    Hi, I'm Florian or [`@qwtel`](https://www.twitter.com/qwtel), which isn't an acronym,
+    I just [wanted a short username](http://qwtel.com/how-to-find-a-short-username) and that one happened to be available.
+
+    Read my thoughts on [#software](http://qwtel.com/tag/software) and [#cryptoeconomics](http://qwtel.com/tag/cryptoeconomics).
 
   # Social media icons in sidebar
   # Comment/uncommet to show/hide
