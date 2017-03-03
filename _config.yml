@@ -24,7 +24,7 @@ description:         >
   Blog for study
 
 # The tags listed as entries in the sidebar
-sidebar_tags:        [jekyll, SLAM]
+sidebar_tags:        [jekyll, SLAM, Trial]
 
 # Fallback image and color if not overwritten for tag or post
 # image:               /image/about/yg_profile.jpg

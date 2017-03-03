@@ -32,3 +32,8 @@ SLAM:
   description: >
     Simultaneous Localization and Mapping.
 
+SLAM:
+  name: Trial
+  color: '#949667'
+  description: >
+    Notes on the works of initial trials. It can be code, setup, anything.
