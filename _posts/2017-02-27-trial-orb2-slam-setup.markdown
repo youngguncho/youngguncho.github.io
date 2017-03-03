@@ -24,6 +24,7 @@ export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:<ORB-SLAM2-Root>/Examples/ROS/ORB_SL
 chmod +x build_ros.sh
 ./build_ros.sh
 ```
+
 ## Running ORB-SLAM2
 1. 빌드한 ORB-SLAM2 binary 링크
 ROS를 사용하면 catkin_ws에서 빌드한 프로젝트들은 "source devel/setup.bash" 명령을 통해 catkin_ws 작업공간을 ROS 환경에 오버레이 시킨다. 즉, catkin_ws에 새롭게 작성한 프로젝트를 "실행"하기 위해서 필요한 과정이다.
