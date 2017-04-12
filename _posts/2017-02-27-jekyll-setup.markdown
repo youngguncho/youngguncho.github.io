@@ -17,6 +17,7 @@ description: >
 sudo apt-get update
 sudo apt-get install ruby-full
 sudo gem install jekyll
+sudo gem install bundler
 ```
 
 ### 블로그를 생성할 repository clone
@@ -60,7 +61,7 @@ end
 bundle insatll
 ```
 * 설치가 끝나면 config를 확인한다.
-여기서 중요한 부분은 url과 baseurl인데 관련 내용은 [링크](https://byparker.com/blog/2014/clearing-up-confusion-around-baseurl/)를 확인하고, url에는 본인 블로그 주소를 입력하고 baseurl을 비워둔다. 그리고 localhost에 블로그 만들어서 확인한다.
+여기서 중요한 부분은 url과 baseurl인데 관련 내용은 [링크](https://byparker.com/blog/2014/clearing-up-confusion-around-baseurl/)를 확인하고, url에는 본인 블로그 주소를 입력하고 baseurl을 비워둔다. 그리고 localhost에 블로그 만들어서 확인한다. (http://localhost:4000/)
 ```
 bundle exec jekyll serve
 ```
