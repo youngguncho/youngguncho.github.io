@@ -40,3 +40,19 @@ Ubuntu repository에 기본으로 추가되어 있는 nvidia 그래픽 드라이
 
 5. 그래픽 드라이버 설치 확인: Terminal 창에서 ```nvidia-settings```를 입력하면 nvidia X server setting가 나오는데 System information에서 드라이버 버전을 확인할 수 있다.
     <img align="middle" src="/image/posts/Ubuntu/graphic-driver/nvidia-settings.png" width="70%">
+
+
+## Cuda 설치
+Nvidia Graphic driver 설치를 완료했다면 다음은 cuda를 설치한다. 본 포스트에서는 Pascal 아키텍쳐(10시리즈)용 cuda인 cuda 8.0에 대한 설치를 설명한다.
+
+1. Cuda download
+    [Nvidia](https://developer.nvidia.com/cuda-downloads)에서 cuda 8.0을 다운로드한다. 64bit ubuntu에서는 Linux - x86_64 - Ubuntu - 16.04 - runfile(local) 을 선택해서 다운로드 한다.
+
+2. Cuda 설치 파일 실행
+    ```
+    sudo sh cuda_8.0.61_375.26_linux.run
+    ```
+
+3. Cuda 설치 시 주의해야할 사항
+
+    Cuda 설치 시 처음 안내문을 읽고 설치를 시작하면 nvidia graphic driver를 다시 설치 하겠냐는 질문을 한다. 그래픽 드라이버를 이미 설치 했다면 해당 질문은 'n' no로 스킵하는 것이 좋다.
