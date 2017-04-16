@@ -7,6 +7,8 @@ description: >
   Hydejack Theme Blog에서 포스트와 Tag 관리하는 방법
 ---
 
+github.io 에서 블로그를 작성하다보면 생각보다 까다로운 부분이 각 포스트에 태그를 할당하고 블로그에서 분류되도록 하는 것이다. 각 테마별로 태그 시스템이 조금씩 다른데 현재 블로그의 테마는 [Hydejack](https://github.com/qwtel/hydejack) 이므로 해당 테마에서 사용하는 태그 추가 방법에 대해서 살펴본다.
+
 ## 블로그에 새로운 태그 추가하기
 
 1. `_data/tags.yaml` 에 태그 추가하기

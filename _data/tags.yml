@@ -31,3 +31,9 @@ Trial:
   color: '#949667'
   description: >
     Notes on the works of initial trials. It can be code, setup, anything.
+    
+Ubuntu:
+  name: Ubuntu
+  color: '#949667'
+  description: >
+    Tips to setup the ubuntu environment.
