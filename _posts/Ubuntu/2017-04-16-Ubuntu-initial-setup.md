@@ -31,8 +31,11 @@ Ubuntu repository에 기본으로 추가되어 있는 nvidia 그래픽 드라이
     ```
 4. (option) 무한 로그인 문제를 예방하기 위한 조치
     * .Xauthority 파일 설정: 터미널에서 다음 명령어 입력
-     ```mv ~/.Xauthority ~/.Xauthority.bak```
+
+        ```mv ~/.Xauthority ~/.Xauthority.bak```
+
     * Nouveau 설정:         ```/etc/modprobe.d/blacklist.conf``` 에서 맨 아래에 다음 줄을 추가
+
         ```black nouveau```
 
 5. 그래픽 드라이버 설치 확인: Terminal 창에서 ```nvidia-settings```를 입력하면 nvidia X server setting가 나오는데 System information에서 드라이버 버전을 확인할 수 있다.
