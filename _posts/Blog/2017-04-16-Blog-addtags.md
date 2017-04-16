@@ -10,7 +10,8 @@ description: >
 ## 블로그에 새로운 태그 추가하기
 
 1. `_data/tags.yaml` 에 태그 추가하기
-  태그 이름, 색, 설명 등을 추가할 수 있다.
+
+    태그 이름, 색, 설명 등을 추가할 수 있다.
     ```yml
     mytag:
       name: mytag
@@ -20,7 +21,8 @@ description: >
     ```
 
 2. `tag` 폴더에 위의 yaml에서 사용한 '태그 이름'과 같은 이름의 파일 만들기
-  Example `/tag/mytag.md` :
+
+    Example `/tag/mytag.md` :
     ```md
     layout: blog-by-tag
     tag: mytag
@@ -32,7 +34,8 @@ description: >
     ```
 
 4. 이제 각 포스트에서 `tags` key를 명시해주면 태그를 지정할 수 있다.
-  각 포스트에서 상단
+
+    각 포스트에서 상단
     ```md
     layout: post
     title: Introducing My New Tag
