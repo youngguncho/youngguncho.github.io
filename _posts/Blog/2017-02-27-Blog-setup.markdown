@@ -2,7 +2,7 @@
 layout: post
 title:  "Initial Jekyll setup!"
 date:   2017-02-27 02:07:58 +0900
-tags: [jekyll]
+tags: [Blog]
 description: >
   Jekyll을 이용해서 github.io blog를 생성하는 방법
 ---
@@ -12,7 +12,7 @@ description: >
 우선 기본 정리만
 
 ### 루비, 지킬 설치
-*
+
 ```
 sudo apt-get update
 sudo apt-get install ruby-full
@@ -21,7 +21,7 @@ sudo gem install bundler
 ```
 
 ### 블로그를 생성할 repository clone
-*
+
 ```
 git clone https://github.com/<username>/<username>.github.io.git
 ```
@@ -74,4 +74,4 @@ bundle exec jekyll serve
 git add -A
 git commit -m "Initial blog test"
 git push origin master
-```    
+```
