@@ -24,6 +24,7 @@ git checkout catkin
 보통 qglviewer에서 많이 에러가 나는데 qt4의 경우 qt5와 충돌이 나지 않으니 apt-get install로 setup해주어도 충분하다. 만약 libqglviewer-dev이 먼저 설치되어 있다면 libqglviewer-dev-qt4를 새로 설치하자.
 ```
 sudo apt remove libqglviewer-dev
+sudo apt install qt4-default
 sudo apt install libqglviewer-dev-qt4
 cd /usr/lib/x86_64-linux-gnu
 sudo ln -s libQGLViewer-qt4.so libQGLViewer.so
