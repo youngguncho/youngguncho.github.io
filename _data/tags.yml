@@ -37,3 +37,10 @@ Ubuntu:
   color: '#949667'
   description: >
     Tips to setup the ubuntu environment.
+    
+Qt:
+  name: Qt
+  color: '#949667'
+  description: >
+    Qt and Opengl Examples.
+    
