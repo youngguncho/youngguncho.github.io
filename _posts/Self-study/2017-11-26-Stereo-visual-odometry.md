@@ -164,7 +164,7 @@ $$\epsilon = \sum_{\mathcal{F}^{t}, \mathcal{F}^{t+1}} (\mathbf{j_{t}} - \mathbf
 - $$j^t, j^{t+1}$$: Inlier set의 2D pixel 위치
 - $$w^t, w^{t+1}$$: 3D homogeneous coordinate
 - $$P$$: projection matrix (3D to pixel)
-- $$T$$: transfomation matrix  $$[R|t]$$
+- $$T$$: transfomation matrix
 
 ```matlab
 function F = minimize(PAR, F1, F2, W1, W2, P1)
