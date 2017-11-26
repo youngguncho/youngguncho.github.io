@@ -15,7 +15,8 @@ Odometry 또는 오도메트리라고 불리는 용어는 무엇을 표현할까
 
 ## Stereo? Monocular?
 Visual Odometry라는 키워드로 검색해보면 주로 접할 수 있는 용어가 Monocular 또는 Stereo Visual Odometry이다. 두 방법의 차이는 용어에서 확인할 수 있듯이 한 대의 카메라를 사용해서 포즈를 구하면 Monocular Visual Odometry, 그리고 두 대의 카메라를 사용해서 포즈를 구하면 Stereo Visual Odometry이다.
-    <img align="middle" src="/image/posts/Self-study/2017-11-26-Stereo-visual-odometry/jed.jpg" width="80%">
+
+<img align="middle" src="/image/posts/Self-study/2017-11-26-Stereo-visual-odometry/zed.jpg" width="80%">
 
 
 ## Sample Stereo Visual Odometry
