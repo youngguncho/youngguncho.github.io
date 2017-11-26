@@ -25,22 +25,27 @@ Blog:
   color: '#949667'
   description: >
     Jekyll is a static site generator, an open-source tool for creating simple yet powerful websites of all shapes and sizes.
-    
+
 Trial:
   name: Trial
   color: '#949667'
   description: >
     Notes on the works of initial trials. It can be code, setup, anything.
-    
+
 Ubuntu:
   name: Ubuntu
   color: '#949667'
   description: >
     Tips to setup the ubuntu environment.
-    
+
 Qt:
   name: Qt
   color: '#949667'
   description: >
     Qt and Opengl Examples.
-    
+
+Self-study:
+  name: Self-study
+  color: '#949667'
+  description: >
+    Self-study post.
