@@ -11,7 +11,7 @@ description: >
 
 
 ## What is Odometry?
-Odometry 또는 오도메트리라고 불리는 용어는 무엇을 표현할까? 자동차 계기판을 보면 차량이 간 거리를 표현하는 '주행거리' 표시가 있는데 이를 영어로 [Odometer](https://en.wikipedia.org/wiki/Odometer)라고 표현한다. 예상컨데 차량의 바퀴 회전수를 체크해서 (엔코더와 같이) 차량의 진행 거리를 측정하여 나타낼 것이다. Robotics에서의 Odometry를 좀 더 일반적인 표현을 사용하는데 단순한 이동거리가 아니라 로봇이 움직인 전체 경로를 표현하기도 한다. 이러한 경로를 구할 때 사용한 센서에 따라서 Wheel Odometry (엔코더), Visual Odometry (카메라), Visual Inertial Odometry (카메라 + IMU) 등으로 표현한다. Odometry에서 나타내는 경로는 로봇의 Pose들로 구성되어 있고 일반적으로 시간 $$t$$일때의 포즈는 $$X^t = [x^t, y^t, z^t, \phi^t, \theta^t, \psi^t]$$로 나타낸다. 여기서 $$[\phi^t, \theta^t, \psi^t]$$는 [Euler angles](http://mathworld.wolfram.com/EulerAngles.html)을 표현하며 $$[x^t, y^t, z^t]$$는  [Cartesian coordinate](https://en.wikipedia.org/wiki/Cartesian_coordinate_system)에서 나타낸다. 결국 Visual Odometry라 함은 카메라 (이미지)를 이용해서 구한 카메라의 포즈 또는 로봇의 포즈를 의미한다.
+Odometry 또는 오도메트리라고 불리는 용어는 무엇을 표현할까? 자동차 계기판을 보면 차량이 간 거리를 표현하는 '주행거리' 표시가 있는데 이를 영어로 [Odometer](https://en.wikipedia.org/wiki/Odometer)라고 표현한다. 예상컨데 차량의 바퀴 회전수를 체크해서 (엔코더와 같이) 차량의 진행 거리를 측정하여 나타낼 것이다. Robotics에서의 Odometry를 좀 더 일반적인 표현을 사용하는데 단순한 이동거리가 아니라 로봇이 움직인 전체 경로를 표현하기도 한다. 이러한 경로를 구할 때 사용한 센 서에 따라서 Wheel Odometry (엔코더), Visual Odometry (카메라), Visual Inertial Odometry (카메라 + IMU) 등으로 표현한다. Odometry에서 나타내는 경로는 로봇의 Pose들로 구성되어 있고 일반적으로 시간 $$t$$일때의 포즈는 $$X^t = [x^t, y^t, z^t, \phi^t, \theta^t, \psi^t]$$로 나타낸다. 여기서 $$[\phi^t, \theta^t, \psi^t]$$는 [Euler angles](http://mathworld.wolfram.com/EulerAngles.html)을 표현하며 $$[x^t, y^t, z^t]$$는  [Cartesian coordinate](https://en.wikipedia.org/wiki/Cartesian_coordinate_system)에서 나타낸다. 결국 Visual Odometry라 함은 카메라 (이미지)를 이용해서 구한 카메라의 포즈 또는 로봇의 포즈를 의미한다.
 
 ## Stereo? Monocular?
 Visual Odometry라는 키워드로 검색해보면 주로 접할 수 있는 용어가 Monocular 또는 Stereo Visual Odometry이다. 두 방법의 차이는 용어에서 확인할 수 있듯이 한 대의 카메라를 사용해서 포즈를 구하면 Monocular Visual Odometry, 그리고 두 대의 카메라를 사용해서 포즈를 구하면 Stereo Visual Odometry이다.
@@ -31,20 +31,20 @@ Visual Odometry라는 키워드로 검색해보면 주로 접할 수 있는 용�
 다양한 Stereo Odometry 알고리즘이 존재하지만 본 포스팅에서 참고할 논문은 2008년 IROS에 발표되었던 [Real-Time Stereo Visual Odometry for Autonomous Ground Vehicles(Howard2008)](https://www-robotics.jpl.nasa.gov/publications/Andrew_Howard/howard_iros08_visodom.pdf)이다. 샘플 데이터로는 Open dataset인 [KITTI benchmark dataset](http://www.cvlibs.net/datasets/kitti/eval_odometry.php)을 사용한다.
 
 Outline:
-    1. 카메라로 부터 연속된 스테레오 영상 획득 $$I^t_l, I^t_r, I^{t+1}_l, I^{t+1}_r$$
-    2. 스테레오 영상 전처리: Undistortion & Rectification
-    3. Disparity map 계산: $$D^t \gets I^t_l, I^t_r$$, $$D^{t+1} \gets I^{t+1}_l, I^{t+1}_r$$
-    4. FAST 알고리즘으로 두 왼쪽 이미지 ($$I^t_l, I^{t+1}_l$$)에서 feature 검출 및 매칭
-    5. 순서 3에서 구한 Disparity map을 이용해서 순서 4에서 구한 feature들의 3D position 계산, $$I^t_l, I^{t+1}_l$$에서의 Point Clouds $$W^t_l, W^{t+1}_l$$ 획득
-    6. 전체 feature points들 중에서 모션 검출에 사용하기 적합한 포인트들 추리기 (Inliers)
-    7. 순서 6에서 구한 Inliers을 이용해서 Optimization, Frame $$t$$에서 왼쪽 카메라에 대한 Frame $$t+1$$의 왼쪽 카메라의 상대적인 위치를 구할 수 있다.
+1. 카메라로 부터 연속된 스테레오 영상 획득 $$I^t_l, I^t_r, I^{t+1}_l, I^{t+1}_r$$
+2. 스테레오 영상 전처리: Undistortion & Rectification
+3. Disparity map 계산: $$D^t \gets I^t_l, I^t_r$$, $$D^{t+1} \gets I^{t+1}_l, I^{t+1}_r$$
+4. FAST 알고리즘으로 두 왼쪽 이미지 ($$I^t_l, I^{t+1}_l$$)에서 feature 검출 및 매칭
+5. 순서 3에서 구한 Disparity map을 이용해서 순서 4에서 구한 feature들의 3D position 계산, $$I^t_l, I^{t+1}_l$$에서의 Point Clouds $$W^t_l, W^{t+1}_l$$ 획득
+6. 전체 feature points들 중에서 모션 검출에 사용하기 적합한 포인트들 추리기 (Inliers)
+7. 순서 6에서 구한 Inliers을 이용해서 Optimization, Frame $$t$$에서 왼쪽 카메라에 대한 Frame $$t+1$$의 왼쪽 카메라의 상대적인 위치를 구할 수 있다.
 
 ### Stereo Image Preprocessing
 먼저 메일 알고리즘에 들어가기 전에 스테레오 영상을 전처리 하는 과정이 필요하다.
 1. [Undistortion](https://en.wikipedia.org/wiki/Distortion_(optics)): 카메라의 렌즈나 센서의 위치 등에 의한 왜곡을 보정하는 단계
 2. [Rectification](https://en.wikipedia.org/wiki/Image_rectification): 스테레오카메라에서 왼쪽, 오른쪽 카메라의 오차를 보정하는 단계이다. 이 단계를 거치고 나면 두 카메라의 epipolar line이 수평축과 평행하게 되므로 disparity를 계산할 때 한 축으로만 (수평축) 계산하면 된다. 아래의 그림을 보면 feature mathcing 결과(yellow line)가 수평축과 평행한 것을 확인할 수 있다. 즉, rectification을 통해서 아래의 그림과 같은 결과를 얻을 수 있도록 보정하는 것이다.
 
-<img align="middle" src="/image/posts/Self-study/2017-11-26-Stereo-visual-odometry/epi.jpg" width="80%">
+    <img align="middle" src="/image/posts/Self-study/2017-11-26-Stereo-visual-odometry/epi.jpg" width="80%">
 
 ### Disparity Map computation
 스테레오 카메라에서 image pair를 획득하면 disparity map을 구할 수 있다. (카메라가 보고있는) 3차원 환경에서 어떤 점이 왼쪽 카메라에서 $$(x,y)$$ 위치에 있었다면 오른쪽 카메라에서 동일한 점은 $$(x+d, y)$$에 위치하게 된다. 여기서 $$d$$는 disparity를 의미하며, 반대로 두 카메라에서 disparity를 구하는 방법은 $$d = x_l-x_r$$이다.
