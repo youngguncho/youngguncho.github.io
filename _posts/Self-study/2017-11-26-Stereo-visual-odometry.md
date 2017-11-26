@@ -107,10 +107,10 @@ $$ Q=
    0 & 0 & -1/T_{x} & 0
   \end{array} } \right]$$
 
-  $$c_x=$$ x축 principal point (intrinsic parameter)
-  $$c_y=$$ y축 principal point (intrinsic parameter)
-  $$f=$$ focal length
-  $$T_x=$$ Stereo baseline
+- $$c_x=$$ x축 principal point (intrinsic parameter)
+- $$c_y=$$ y축 principal point (intrinsic parameter)
+- $$f=$$ focal length
+- $$T_x=$$ Stereo baseline
 
 ### Inlier Detection step
 Feature들의 3차원 포인트를 구하면 이제 Optimization에 들어가기 전에 Outlier들을 추려내는 과정이 필요하다. Optimization 기반 방법은 모든 입력들의 에러를 최소화 하는 방향으로 최적화 되기 때문에 입력들 중에 Outlier가 포함되어 있다면 결과가 좋지 않을 경우가 많다. 이를 위해 [Robust estimator (M-estimator)](https://en.wikipedia.org/wiki/M-estimator)등이 사용되기도 하나 가장 원론적인 방법은 Optimization에 사용할 입력을 정리해서 Outlier를 최대한 제거하는 것이 될 것이다.
@@ -164,10 +164,10 @@ end
 
 $$\epsilon = \sum_{\mathcal{F}^{t}, \mathcal{F}^{t+1}} (\mathbf{j_{t}} - \mathbf{P}\mathbf{T}\mathbf{w_{t+1}})^{2} + (\mathbf{j_{t+1}} - \mathbf{P}\mathbf{T^{-1}}\mathbf{w_{t}})^{2}$$
 
-$$j^t, j^{t+1}$$: Inlier set의 2D pixel 위치
-$$w^t, w^{t+1}$$: 3D homogeneous coordinate
-$$P$$: projection matrix (3D to pixel)
-$$T$$: transfomation matrix  $$[R|t]$$
+- $$j^t, j^{t+1}$$: Inlier set의 2D pixel 위치
+- $$w^t, w^{t+1}$$: 3D homogeneous coordinate
+- $$P$$: projection matrix (3D to pixel)
+- $$T$$: transfomation matrix  $$[R|t]$$
 
 ```matlab
 function F = minimize(PAR, F1, F2, W1, W2, P1)
