@@ -10,7 +10,7 @@ description: >
 이번 글은 Visual odometry에 대한 대략적인 설명은 담고있다. SLAM을 접하면 가장 기본적으로 보게 되는 용어중 하나가 'Odometry'인데 이 글을 통해 기본적인 Visual Odometry에 대한 개념을 이해할 수 있기를 기대한다. 글은 기본적으로 [Avi Shingh의 영문포스트](https://avisingh599.github.io/vision/visual-odometry-full/)를 번역+수정하여 작성하였다. Visaul Odometry 샘플 알고리즘은 Avi Shingh과 같이 [Real-Time Stereo Visual Odometry for Autonomous Ground Vehicles(Howard2008)](https://www-robotics.jpl.nasa.gov/publications/Andrew_Howard/howard_iros08_visodom.pdf)을 기반으로 하였다. 코드는 원문 포스트의 깃허브를 Folk해서 부분적으로 수정하였다[]
 
 
- ## What is Odometry?
+## What is Odometry?
 Odometry 또는 오도메트리라고 불리는 용어는 무엇을 표현할까? 자동차 계기판을 보면 차량이 간 거리를 표현하는 '주행거리' 표시가 있는데 이를 영어로 [Odometer](https://en.wikipedia.org/wiki/Odometer)라고 표현한다. 예상컨데 차량의 바퀴 회전수를 체크해서 (엔코더와 같이) 차량의 진행 거리를 측정하여 나타낼 것이다. Robotics에서의 Odometry를 좀 더 일반적인 표현을 사용하는데 단순한 이동거리가 아니라 로봇이 움직인 전체 경로를 표현하기도 한다. 이러한 경로를 구할 때 사용한 센서에 따라서 Wheel Odometry (엔코더), Visual Odometry (카메라), Visual Inertial Odometry (카메라 + IMU) 등으로 표현한다. Odometry에서 나타내는 경로는 로봇의 Pose들로 구성되어 있고 일반적으로 시간 $$t$$일때의 포즈는 $$X^t = [x^t, y^t, z^t, \phi^t, \theta^t, \psi^t]$$로 나타낸다. 여기서 $$[\phi^t, \theta^t, \psi^t]$$는 [Euler angles](http://mathworld.wolfram.com/EulerAngles.html)을 표현하며 $$[x^t, y^t, z^t]$$는  [Cartesian coordinate](https://en.wikipedia.org/wiki/Cartesian_coordinate_system)에서 나타낸다. 결국 Visual Odometry라 함은 카메라 (이미지)를 이용해서 구한 카메라의 포즈 또는 로봇의 포즈를 의미한다.
 
 ## Stereo? Monocular?
