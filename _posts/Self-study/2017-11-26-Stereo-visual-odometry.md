@@ -7,7 +7,7 @@ description: >
   Stereo Visual Odometry
 ---
 
-이번 글은 Visual odometry에 대한 대략적인 설명은 담고있다. SLAM을 접하면 가장 기본적으로 보게 되는 용어중 하나가 'Odometry'인데 이 글을 통해 기본적인 Visual Odometry에 대한 개념을 이해할 수 있기를 기대한다. 글은 기본적으로 [Avi Shingh의 영문포스트](https://avisingh599.github.io/vision/visual-odometry-full/)를 번역+수정하여 작성하였다. Visaul Odometry 샘플 알고리즘은 Avi Shingh과 같이 [Real-Time Stereo Visual Odometry for Autonomous Ground Vehicles(Howard2008)](https://www-robotics.jpl.nasa.gov/publications/Andrew_Howard/howard_iros08_visodom.pdf)을 기반으로 하였다. 코드는 원문 포스트의 깃허브를 Folk해서 부분적으로 수정하였다[]
+이번 글은 Visual odometry에 대한 대략적인 설명은 담고있다. SLAM을 접하면 가장 기본적으로 보게 되는 용어중 하나가 'Odometry'인데 이 글을 통해 기본적인 Visual Odometry에 대한 개념을 이해할 수 있기를 기대한다. 글은 기본적으로 [Avi Shingh의 영문포스트](https://avisingh599.github.io/vision/visual-odometry-full/)를 번역+수정하여 작성하였다. Visaul Odometry 샘플 알고리즘은 Avi Shingh과 같이 [Real-Time Stereo Visual Odometry for Autonomous Ground Vehicles(Howard2008)](https://www-robotics.jpl.nasa.gov/publications/Andrew_Howard/howard_iros08_visodom.pdf)을 기반으로 하였다. [코드](https://github.com/youngguncho/vo-howard08)는 원문 포스트의 깃허브를 Folk해서 부분적으로 수정하였다.
 
 
 ## What is Odometry?
