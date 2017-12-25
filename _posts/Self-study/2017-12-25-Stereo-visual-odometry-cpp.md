@@ -30,7 +30,7 @@ H = cv::findHomography(points1, points2, cv::RANSAC, error, status);
 위 과정에서 Inlier point를 추리고 나면 이제 연속된 프레임에서 어느정도 신뢰할 만한 매칭 포인트를 가지고 있다고 말할 수 있다. 이제 이 포인트들을 이용해서 두 카메라간의 모션을 구하는 방법에 대해서 살펴본다. 이 방법은 [ORB-SLAM2](https://github.com/raulmur/ORB_SLAM2)에서 Appendix의 Bundle adjustment와 같은 방법으로 multi-frame에 대해서 적용할 수 있지만 이번 구현에서는 연속된 영상의 two-view BA에 적용하였다. 우선 방법에 대해서 간단히 말로 풀어쓰면 다음과 같다. 기준 프레임 (이전 프레임)에서 포인트들의 초기 3차원 위치를 알고 있을 때 이 포인트들을 임의의 모션을 이용해 타켁 프레임으로 transform하고 이미지 좌표계 상으로 projection 했을 때의 포인트 위치 (u, v)는 feature matching에서 구한 대응되는 feature들의 위치와 같아야 한다. 우선 $$i$$번째 포인트의 이미지 좌표상의 위치와 $$\mathbf{x} = (u, v)$$와 3차원 위치 $$X = (x, y, z)$$를 식과 같이 표현하며 아래의 subscription은 해당하는 프레임을 의미한다. 프레임간의 모션은 $$\mathbf{T}_{t,t-1}$$로 나타냈으며 의미는 t-1에서 t로의 모션을 뜻한다. 아래의 식은 포인트 i에 대한 에러를 나타내며 $$\pi$$는 3차원 포인트를 이미지 상으로 projection하는 projection function을 의미한다.
 
 $$
-\mathbf{e}^i = \mathbf{x}^i_{t}-\pi^i(\mathbf{T}_{t,t-1}, X^i_{t-1}) \\
+\mathbf{e}^i = \mathbf{x}^i_{t}-\pi^i(\mathbf{T}_{t,t-1}, X^i_{t-1})
 $$
 
 그러므로 Cost function은 위 에러의 합이 최소화 되는 방향으로 최적화 되며 아래의 식과 같이 표현할 수 있다. 아래의 식에서 $$\Omega$$는 2x2 Covariance matrix이며 $$\rho$$는 robust kernel인 M-estimator를 의미한다. 본 구현에서는 Huber cost function을 적용하였다.
