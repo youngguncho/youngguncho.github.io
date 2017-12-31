@@ -49,3 +49,9 @@ Self-study:
   color: '#949667'
   description: >
     Self-study post.
+    
+Review-book:
+  name: Review-book
+  color: '#949667'
+  description: >
+    Book review.
