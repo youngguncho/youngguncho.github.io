@@ -8,7 +8,7 @@ description: >
 ---
 가끔 독서를 하면서 가볍게 몇 줄 정도 요약을 한 적은 있지만 이렇게 서평! 을 써보려고 한 적은 처음이다. 그런 의미에서 블로그의 첫 서평 포스팅을 유시민 작가의 "표현의 기술"로 정했다. 이 책은 내가 서평을 써볼까.. 하는 생각을 하게한 책으로 오랜만에 아주 술술 읽히는 글과 그림으로 가득했다. 표현의 기술을 표현하는 글이라니! 아직 서평과 같은 성질의 글을 작성해 본적이 없기에 내용의 서술과 느낀 점이 두서 없을 것 같긴 하지만 우선 서평에 대한 초고를 작성해본다.
 
-<img align="middle" src="/image/posts/Book-review/2017-12-31-Description-of-expression/book_description_of_expression.png" width="70%">
+<img align="middle" src="/image/posts/Review-book/2017-12-31-Description-of-expression/book_description_of_expression.png" width="70%">
 
 ## 표현의 기술
 
