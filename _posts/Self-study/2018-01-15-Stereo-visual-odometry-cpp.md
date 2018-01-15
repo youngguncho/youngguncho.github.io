@@ -50,6 +50,6 @@ $$
 ## Result and Conclusion
 다음은 Two-view BA를 통해서 구한 frame간 Relative Pose를 Compose 하여 Vehicle Trajectory를 구한 결과이다. Initial frame을 (0, 0, 0)로 하여 Compose를 하면 i번째 frame의 Vehicle Pose는 $$\mathbf{T}_{0,i}=\mathbf{T}_{0,1}\mathbf{T}_{1,2} \cdots \mathbf{T}_{i-2,i-1}\mathbf{T}_{i-1,i}$$ 이 식과 같은 Motion composition을 통해서 구할 수 있다. Test는 KITTI odometry benchmark dataset에서 00번과 06번 시퀀스에서 진행하였다. Odometry benchmark의 Ground truth와 같이 깔끔하게 Path가 나오진 않았지만 Rotation에서 부분적으로 Bias가 나온 것을 제외하고는, 그리기 Loop closure, Keyframe없이 단순히 Two-view만 이어 붙인 것 치고는 생각보다는 준수한 결과가 나온것을 확인할 수 있다.  
 
-<img align="middle" src="/image/posts/Self-study/2017-12-25-Stereo-visual-odometry-cpp/trajectory_00_06.jpg" width="80%">
+<img align="middle" src="/image/posts/Self-study/2017-12-25-Stereo-visual-odometry-cpp/trajectory_00_06.png" width="80%">
 
 사실 어찌보면 KITTI dataset은 사용하기가 매우 편리하고 (Sync, Distortion, Rectification이 이미 되어있는!!) 영상도 깔끔하기 때문에 위와 같이 큰 추가사항들 없이 결과를 뽑아도 꽤 괜찮게 나오긴 했다. 하지만 실제로 데이터를 획득해서 돌려보면 생각보다 데이터 전처리가 많이 들어가야 하고, 생각보다 다른 외적인 요인들(Dynamic objects, exposure, blur 등등)에 의해 기존에 유명한 Open-source Odometry 알고리즘들도 결과가 좋지 않은 것을 볼 수 있다. 이러한 문제들에서 조금 더 Robust하게 Motion Estimation을 하는 방법이 위에서 언급한 Keyframe을 기준으로 뽑는다든가, M-estimator를 적용한다든가 하는 방법인데 센서 단계에서 쉽게 적용할 수 있는 방법이 바로 IMU(Inertial Measurement Unit)를 사용하는 방법이 될 것이다.
