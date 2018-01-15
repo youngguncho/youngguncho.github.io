@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Stereo Visual Odometry C++ implementation!"
-date:   2017-12-25 02:07:58 +0900
+date:   2018-01-15 02:07:58 +0900
 tags: [Self-study]
 description: >
   Stereo Visual Odometry (C++ version) [작성중]
@@ -12,7 +12,7 @@ description: >
 ## Stereo Matching
 지난 Stereo Odometry의 Matlab 기반 포스트와는 달리 이번 글에서는 ORB feature를 이용해서 포인트 기반으로 빠르고 안정적으로 stereo matching을 할 수 있는 ORB SLAM2의 방법을 차용하여 구현하였다. ORB SLAM2에서는 왼쪽, 오른쪽 이미지에서 각각 ORB feature/descriptor를 추출한 후 왼쪽 이미지와 가장 matching이 잘 되는 오른쪽 이미지의 descriptor를 matching 포인트로 이용하였다. 엄밀하게 매칭 포인트를 구하기 위해서 feature description의 각 Octave level에서 matching을 해서 disparity를 구한다. 아래의 이미지가 Stereo Matching에서 구한 feature를 3차원 포인트로 복원한 모습으로 지면 영역 (초록색 포인트)과 옆 건물들(파란색 포인트)이 제대로 표현된 것을 확인할 수 있다.
 
-<img align="middle" src="/image/posts/Self-study/2017-12-25-Stereo-visual-odometry-cpp/pcds.gif" width="70%">
+<img align="middle" src="/image/posts/Self-study/2017-12-25-Stereo-visual-odometry-cpp/pcds.gif" width="60%">
 
 ## Motion estimation
 이전 프레임의 왼쪽 이미지 $$I^{t-1}_l$$과 현재 프레임의 왼쪽 이미지 $$I^{t}_l$$가 모션을 구하기 위한 포인트로 사용된다. ORB descriptor가 Binary descriptor이기 때문에 Opencv에서 Brute-Force Hamming Distance를 Matching Distance로 사용하고 Nearest Neighbor Distance Ratio (NNDR)을 이용해서 두 프레임간의 매칭 포인트를 구한다. 아래의 과정은 두 프레임간 매칭포인트를 구한 후 Outlier를 제거하고 Inlier와 대응되는 3차원 포인트 (스테레오 카메라이므로)를 이용해서 모션을 구하는 방법이다.
@@ -30,14 +30,14 @@ H = cv::findHomography(points1, points2, cv::RANSAC, error, status);
 
 위 설명과 같이 Fundamental Matrix (또는 Essential Matrix)나 Homography 기반의 RANSAC을 수행한 후 연속된 왼쪽 프레임 간의 Inlier를 그려보면 아래의 그림과 같이 나타나는 것을 확인할 수 있다. 육안으로 확인해 보면 대부분 잘 매칭된 (Cross 되어 연결된 선들이 보이지 않기 때문에) 결과를 나타낸다.
 
-<img align="middle" src="/image/posts/Self-study/2017-12-25-Stereo-visual-odometry-cpp/inliers.gif" width="70%">
+<img align="middle" src="/image/posts/Self-study/2017-12-25-Stereo-visual-odometry-cpp/inliers.gif" width="80%">
 
 
 ### Two-view BA
-위 과정에서 Inlier point를 추리고 나면 이제 연속된 프레임에서 어느정도 신뢰할 만한 매칭 포인트를 가지고 있다고 말할 수 있다. 이제 이 포인트들을 이용해서 두 카메라간의 모션을 구하는 방법에 대해서 살펴본다. 이 방법은 [ORB-SLAM2](https://github.com/raulmur/ORB_SLAM2)에서 Appendix의 Bundle adjustment와 같은 방법으로 multi-frame에 대해서 적용할 수 있지만 이번 구현에서는 연속된 영상의 two-view BA에 적용하였다. 우선 방법에 대해서 간단히 말로 풀어쓰면 다음과 같다. 기준 프레임 (이전 프레임)에서 포인트들의 초기 3차원 위치를 알고 있을 때 이 포인트들을 임의의 모션을 이용해 타켁 프레임으로 transform하고 이미지 좌표계 상으로 projection 했을 때의 포인트 위치 (u, v)는 feature matching에서 구한 대응되는 feature들의 위치와 같아야 한다. 우선 $$i$$번째 포인트의 이미지 좌표상의 위치와 $$\mathbf{x} = (u, v)$$와 3차원 위치 $$X = (x, y, z)$$를 식과 같이 표현하며 아래의 subscription은 해당하는 프레임을 의미한다. 프레임간의 모션은 $$\mathbf{T}_{t,t-1}$$로 나타냈으며 의미는 t-1에서 t로의 모션을 뜻한다. 아래의 식은 포인트 i에 대한 에러를 나타내며 $$\pi$$는 3차원 포인트를 이미지 상으로 projection하는 projection function을 의미한다.
+위 과정에서 Inlier point를 추리고 나면 이제 연속된 프레임에서 어느정도 신뢰할 만한 매칭 포인트를 가지고 있다고 말할 수 있다. 이제 이 포인트들을 이용해서 두 카메라간의 모션을 구하는 방법에 대해서 살펴본다. 이 방법은 [ORB-SLAM2](https://github.com/raulmur/ORB_SLAM2)에서 Appendix의 Bundle adjustment와 같은 방법으로 multi-frame에 대해서 적용할 수 있지만 이번 구현에서는 연속된 영상의 two-view BA에 적용하였다. 우선 방법에 대해서 간단히 말로 풀어쓰면 다음과 같다. 기준 프레임 (이전 프레임)에서 포인트들의 초기 3차원 위치를 알고 있을 때 이 포인트들을 임의의 모션을 이용해 타켁 프레임으로 transform하고 이미지 좌표계 상으로 projection 했을 때의 포인트 위치 (u, v)는 feature matching에서 구한 대응되는 feature들의 위치와 같아야 한다. 우선 $$i$$번째 포인트의 이미지 좌표상의 위치와 $$\mathbf{x} = (u, v)$$와 3차원 위치 $$X = (x, y, z)$$를 식과 같이 표현하며 아래의 subscription은 해당하는 프레임을 의미한다. 프레임간의 모션은 $$\mathbf{T}_{t-1,t}$$로 나타냈으며 의미는 t-1에서 t로의 모션을 뜻s한다. 아래의 식은 포인트 i에 대한 에러를 나타내며 $$\pi$$는 3차원 포인트를 이미지 상으로 projection하는 projection function을 의미한다.
 
 $$
-\mathbf{e}^i = \mathbf{x}^i_{t}-\pi^i(\mathbf{T}_{t,t-1}, X^i_{t-1})
+\mathbf{e}^i = \mathbf{x}^i_{t}-\pi^i(\mathbf{T}_{t-1,t}, X^i_{t-1})
 $$
 
 그러므로 Cost function은 위 에러의 합이 최소화 되는 방향으로 최적화 되며 아래의 식과 같이 표현할 수 있다. 아래의 식에서 $$\Omega$$는 2x2 Covariance matrix이며 $$\rho$$는 robust kernel인 M-estimator를 의미한다. 본 구현에서는 Huber cost function을 적용하였다.
@@ -46,4 +46,5 @@ $$
 C=\sum_{i}\rho(\mathbf{e}^i\Omega^{-1}\mathbf{e}^i)
 $$
 
-## Result and Conclusion (작성중)
+## Result and Conclusion
+다음은 Two-view BA를 통해서 구한 frame간 Relative Pose를 Compose 하여 Vehicle Trajectory를 구한 결과이다. Initial frame을 (0, 0, 0)로 하여 Compose를 하면 i번째 frame의 Vehicle Pose는 $$\mathbf{T}_{0,i}=\mathbf{T}_{0,1}\mathbf{T}_{1,2} \cdots \mathbf{T}_{i-2,i-1}\mathbf{T}_{i-1,i}$$ 이 식과 같은 Motion composition을 통해서 구할 수 있다. 
