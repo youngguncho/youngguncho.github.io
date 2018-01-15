@@ -32,7 +32,6 @@ H = cv::findHomography(points1, points2, cv::RANSAC, error, status);
 
 <img align="middle" src="/image/posts/Self-study/2017-12-25-Stereo-visual-odometry-cpp/inliers.gif" width="80%">
 
-
 ### Two-view BA
 위 과정에서 Inlier point를 추리고 나면 이제 연속된 프레임에서 어느정도 신뢰할 만한 매칭 포인트를 가지고 있다고 말할 수 있다. 이제 이 포인트들을 이용해서 두 카메라간의 모션을 구하는 방법에 대해서 살펴본다. 이 방법은 [ORB-SLAM2](https://github.com/raulmur/ORB_SLAM2)에서 Appendix의 Bundle adjustment와 같은 방법으로 multi-frame에 대해서 적용할 수 있지만 이번 구현에서는 연속된 영상의 two-view BA에 적용하였다. 우선 방법에 대해서 간단히 말로 풀어쓰면 다음과 같다. 기준 프레임 (이전 프레임)에서 포인트들의 초기 3차원 위치를 알고 있을 때 이 포인트들을 임의의 모션을 이용해 타켁 프레임으로 transform하고 이미지 좌표계 상으로 projection 했을 때의 포인트 위치 (u, v)는 feature matching에서 구한 대응되는 feature들의 위치와 같아야 한다. 우선 $$i$$번째 포인트의 이미지 좌표상의 위치와 $$\mathbf{x} = (u, v)$$와 3차원 위치 $$X = (x, y, z)$$를 식과 같이 표현하며 아래의 subscription은 해당하는 프레임을 의미한다. 프레임간의 모션은 $$\mathbf{T}_{t-1,t}$$로 나타냈으며 의미는 t-1에서 t로의 모션을 뜻s한다. 아래의 식은 포인트 i에 대한 에러를 나타내며 $$\pi$$는 3차원 포인트를 이미지 상으로 projection하는 projection function을 의미한다.
 
@@ -46,5 +45,10 @@ $$
 C=\sum_{i}\rho(\mathbf{e}^i\Omega^{-1}\mathbf{e}^i)
 $$
 
+실제로 Motion을 구하기 위해서는 Cost function에서 Error term을 현재 motion에 대해서 Linearize하고 Jocobian을 구해서 motion을 delta만큼 업데이트 하는 과정을 반복해서 수행하야한다. 즉, 함수최적화에서 Nonlinear Least Square 문제를 푸는 것과 같다. 일반적인 함수최적화 문제에서 모델 파라미터가 모션 정보로 볼 수 있다. Nonlinear least square 문제는 여러가지 방법으로 풀 수 있는데 SLAM에서 주로 사용하는 방법은 [Gauss-Newton](https://en.wikipedia.org/wiki/Gauss%E2%80%93Newton_algorithm)이나 [Levenberg-Marquardt](https://en.wikipedia.org/wiki/Levenberg%E2%80%93Marquardt_algorithm)을 들 수 있다. 또한 이미 많은 오픈소스 Back-end library등이 공개 되어 있는데, 그 중 유명한 것은 [ISAM](http://people.csail.mit.edu/kaess/isam/), [G2O](https://github.com/RainerKuemmerle/g2o), 그리고 [GTSAM](https://bitbucket.org/gtborg/gtsam)이 있다. 이번 포스트에서는 이 중 GTSAM을 사용하여 코드를 구현하였다! (이러한 경우 실제 파라미터 업데이트는 라이브러리에서 구현되어 있으므로 사용자는 measurement 정의만 잘 해주면 쉽게 모션을 구할 수 있다.)
+
 ## Result and Conclusion
-다음은 Two-view BA를 통해서 구한 frame간 Relative Pose를 Compose 하여 Vehicle Trajectory를 구한 결과이다. Initial frame을 (0, 0, 0)로 하여 Compose를 하면 i번째 frame의 Vehicle Pose는 $$\mathbf{T}_{0,i}=\mathbf{T}_{0,1}\mathbf{T}_{1,2} \cdots \mathbf{T}_{i-2,i-1}\mathbf{T}_{i-1,i}$$ 이 식과 같은 Motion composition을 통해서 구할 수 있다. 
+다음은 Two-view BA를 통해서 구한 frame간 Relative Pose를 Compose 하여 Vehicle Trajectory를 구한 결과이다. Initial frame을 (0, 0, 0)로 하여 Compose를 하면 i번째 frame의 Vehicle Pose는 $$\mathbf{T}_{0,i}=\mathbf{T}_{0,1}\mathbf{T}_{1,2} \cdots \mathbf{T}_{i-2,i-1}\mathbf{T}_{i-1,i}$$ 이 식과 같은 Motion composition을 통해서 구할 수 있다. Test는 KITTI odometry benchmark dataset에서 00번과 06번 시퀀스에서 진행하였다.
+
+<img align="middle" src="/image/posts/Self-study/2017-12-25-Stereo-visual-odometry-cpp/trajectory_00.jpg" width="80%"
+ img align="middle" src="/image/posts/Self-study/2017-12-25-Stereo-visual-odometry-cpp/trajectory_06.jpg" width="80%">
