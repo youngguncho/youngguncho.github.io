@@ -55,3 +55,9 @@ Review-book:
   color: '#949667'
   description: >
     Book review.
+    
+Review-paper:
+  name: Review-paper
+  color: '#949667'
+  description: >
+    Paper review.    

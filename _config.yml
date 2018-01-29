@@ -24,7 +24,7 @@ description:         >
   Blog for study
 
 # The tags listed as entries in the sidebar
-sidebar_tags:        [Blog, Self-study, Trial, Ubuntu, Qt, Review-book]
+sidebar_tags:        [Blog, Self-study, Trial, Ubuntu, Qt, Review-book, Review-paper]
 
 # Fallback image and color if not overwritten for tag or post
 # image:               /image/about/yg_profile.jpg
