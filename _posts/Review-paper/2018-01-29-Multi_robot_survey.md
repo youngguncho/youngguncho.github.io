@@ -2,7 +2,7 @@
 layout: post
 title:  "Multiple-Robot Simultaneous Localization and Mapping: A Review"
 date:   2018-01-29 02:07:58 +0900
-tags: [Self-study]
+tags: [Review-paper]
 description: >
   2016년 Journal of field robotics (JFR)에 개제되었던 Survey논문인 "Multiple-Robot Simultaneous Localization and Mapping, A Review"에 대한 리뷰 포스트 이다. [작성중]
 ---
