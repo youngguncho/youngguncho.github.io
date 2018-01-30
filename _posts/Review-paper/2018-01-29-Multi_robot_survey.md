@@ -53,4 +53,9 @@ $$ p(m, x^a_{1:t}, x^b_{1:t}|z^a_{1:t}, z^b_{1:t},u^a_{1:t}, u^b_{1:t}, x^a_0, x
 
 <img align="middle" src="/image/posts/Review-paper/2018-01-29-Multi_robot_survey/map_representation_ex.png" width="90%">
 
-[작성중]
+Map을 어떻게 표현할 것인가에 대해서 위에서 구분지어 살펴봤으면, 이번에는 Data processing, 즉 SLAM 문제를 풀기위한 방법론에서 구분지어 살펴볼 수 있다. 위의 표에서 Data processing에는 **Filtering**, **Smoothing**, **AI** 이렇게 3가지 방법으로 구별할 수 있다. Filtering 기반 방법에서 대표되는 방법은 우리가 흔히 아는 EKF (Extended Kalman Filter) SLAM, EIF (Extended Information Filter) SLAM, PF (Particle Filter) SLAM을 예시로 들 수 있다. 기본적으로 Filtering 기반 방법은 **로봇의 현재 위치와 맵**을 구하기 위한 목표로 삼는다. 반면 Smoothing은 기본적으로 **로봇의 전체 경로**를 구하는 목적으로 하고 (Pose graph SLAM의 경우에는) 추가적으로 맵을 함께 업데이트 하는 경우가 많다. AI 기반 방법은 이와는 별개로 학습을 통해서 Localization이나 Place recognition을 하는 연구가 많다. 이러한 연구들도 표로 정리해 보면 다음과 같이 관련 연구의 장, 단점과 함께 살펴볼 수 있다.
+
+<img align="middle" src="/image/posts/Review-paper/2018-01-29-Multi_robot_survey/slam_comparison.png" width="90%">
+
+
+## Multiple-Robot SLAM
