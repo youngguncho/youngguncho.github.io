@@ -100,7 +100,7 @@ Multiple-Robot SLAM에 있어서 다음 4가지 질문들이 필수적으로 고
 
 논문에도 잘 설명이 되어있지만 각 부분을 간략히 보면 위와 같이 요약해서 볼 수 있다. 저자는 이 부분도 역시 표로 정리하고, 위 문제들을 고려한 Multiple-Robot SLAM 논문들도 함께 리스트를 제공하였다.
 
-<img align="middle" src="/image/posts/Review-paper/2018-01-29-Multi_robot_survey/prob_multi_robot.png" width="70%">
+<img align="middle" src="/image/posts/Review-paper/2018-01-29-Multi_robot_survey/prob_multi_robot.png" width="90%">
 
 
 ## Conclusion
