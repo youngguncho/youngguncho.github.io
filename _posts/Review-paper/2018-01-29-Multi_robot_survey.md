@@ -51,4 +51,6 @@ $$ p(m, x^a_{1:t}, x^b_{1:t}|z^a_{1:t}, z^b_{1:t},u^a_{1:t}, u^b_{1:t}, x^a_0, x
 
 논문에 표현된 map representation에 대한 예시들을 보면 다음과 같다. Topological map을 그림상의 점들과 연결된 링크들 처럼 보통 metric 정보 없이 (metric은 다시 embedding이 가능하니까) 노드들 간의 연결성을 보는 관점이고, semantic map은 map에 semantic 정보 (object, region labeling과 같은)를 추가해서 표현한 맵이다. 그리고 appearance map을 일반적으로 그래프로 표현되며 각 노드가 geometric 정보가 아닌 그림처럼 사진이나 또는 압축된 appearance 정보등으로 표현된 맵을 의미한다.
 
+<img align="middle" src="/image/posts/Review-paper/2018-01-29-Multi_robot_survey/map_representation_ex.png" width="60%">
+
 [작성중]
