@@ -38,12 +38,12 @@ $$ p(m, x^a_{1:t}, x^b_{1:t}|z^a_{1:t}, z^b_{1:t},u^a_{1:t}, u^b_{1:t}, x^a_0, x
 
 공유하는 global map (m)을 제외하고 나머지 state는 모두 a, b에 대해 확장하게 된다. 즉, 확률 문제가 두 로봇에 대해서만 정의되어도 매우 복잡해지게 되는데 이러한 정의를 위해서는 각 로봇의 observation과 global measurement 들간의 관계 (data association)도 정의가 되어있어야 한다는 것이다. 그림으로 그려보면 다음과 같다.
 
-<img align="middle" src="/image/posts/Review-paper/2018-01-29-Multi_robot_survey/multi_prob_state.png" width="60%">
+<img align="middle" src="/image/posts/Review-paper/2018-01-29-Multi_robot_survey/multi_prob_state.png" width="70%">
 
 ## SLAM의 3가지 이슈
 우선 SLAM을 구성하는 3가지 요소를 살펴보면 1) sensors 2) data processing 3) map representation으로 나타낼 수 있다. 용어에 맞게 사용하는 센서, 데이터 처리 방법 (알고리즘), 그리고 맵의 표현 방법 이렇게 3가지 이슈들이 정리가 되어야 하나의 SLAM method를 완성할 수 있다. 저자가 논문에서 정리한 표를 보면 다음과 같다.
 
-<img align="middle" src="/image/posts/Review-paper/2018-01-29-Multi_robot_survey/slam_3_issues.png" width="60%">
+<img align="middle" src="/image/posts/Review-paper/2018-01-29-Multi_robot_survey/slam_3_issues.png" width="70%">
 
 여기서 센서는 환경에 따라서 달라지기도 하고, 플랫폼이나 용도에 따라서 달라지기 때문에 일관되게 표현할 수 없지만 acoustic sensor와 같이 수중에서만 되는 센서도 있을 수 있으며 LiDAR와 같이 지상에서 좀 더 많이 사용되는 센서가 있을 수도 있다. Data processing 같은 경우는 크게 Filtering / Smoothing / AI 로 나눌 수가 있다. 여기서 재밌는 부분은 바로 map representation에 대한 부분이다. 사실 위와 같이 센서나 데이터 처리에 대한 내용은 다른 논문에서도 자주 언급되기 때문에 이미 파악하고 있을 수도 있는 내용인데 map representation같은 경우는 이 논문처럼 분류해놓은 것을 자주 보진 못한 것 같다. 논문에는 자세하게 표현되어 있지만 결과적으로 정리된 표를 보면 아래와 같다.
 
@@ -51,6 +51,6 @@ $$ p(m, x^a_{1:t}, x^b_{1:t}|z^a_{1:t}, z^b_{1:t},u^a_{1:t}, u^b_{1:t}, x^a_0, x
 
 논문에 표현된 map representation에 대한 예시들을 보면 다음과 같다. Topological map을 그림상의 점들과 연결된 링크들 처럼 보통 metric 정보 없이 (metric은 다시 embedding이 가능하니까) 노드들 간의 연결성을 보는 관점이고, semantic map은 map에 semantic 정보 (object, region labeling과 같은)를 추가해서 표현한 맵이다. 그리고 appearance map을 일반적으로 그래프로 표현되며 각 노드가 geometric 정보가 아닌 그림처럼 사진이나 또는 압축된 appearance 정보등으로 표현된 맵을 의미한다.
 
-<img align="middle" src="/image/posts/Review-paper/2018-01-29-Multi_robot_survey/map_representation_ex.png" width="60%">
+<img align="middle" src="/image/posts/Review-paper/2018-01-29-Multi_robot_survey/map_representation_ex.png" width="90%">
 
 [작성중]
