@@ -100,7 +100,7 @@ kramdown:
     preview_as_code: true
 
 compress_html:
-  comments:          ["<!-- ", " -->"]
+  #comments:          ["<!-- ", " -->"]
   clippings:         all
   endings:           all
   ignore:
