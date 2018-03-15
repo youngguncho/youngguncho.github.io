@@ -3,6 +3,7 @@ layout: post
 title:  "Initial Jekyll setup!"
 date:   2017-02-27 02:07:58 +0900
 tags: [Blog]
+comments: true
 description: >
   Jekyll을 이용해서 github.io blog를 생성하는 방법
 ---
