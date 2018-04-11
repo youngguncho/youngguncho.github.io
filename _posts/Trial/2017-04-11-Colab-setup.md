@@ -19,14 +19,12 @@ description: >
 ## Prepare Google Colab!
 Google Colab을 사용하기 위한 기본적은 준비사항에 대해 먼저 살펴보겠습니다. Colab의 노트북 파일들은 구글 드라이브와 연동이 되기 때문에 먼저 드라이브에서 Colab을 사용할 준비를 합니다.
 
-<img align="middle" src="/image/posts/Trial/2018-04-11-Colab-setup/colab0.png" width="70%">
-우선 위 그림과 같이 구글 드라이브에서 __colab__ 폴더와 __dataset__ 폴더를 만들어 줍니다. 여기서 __colab__ 폴더는 코드가, __dataset__ 폴더는 데이터 셋이 들어갈 폴더입니다.
+우선 그림과 같이 구글 드라이브에서 __colab__ 폴더와 __dataset__ 폴더를 만들어 줍니다. 여기서 __colab__ 폴더는 코드가, __dataset__ 폴더는 데이터 셋이 들어갈 폴더입니다.
+<img align="middle" src="/image/posts/Trial/2018-04-11-Colab-setup/colab0.png" width="100%">
 
-<img align="middle" src="/image/posts/Trial/2018-04-11-Colab-setup/colab0.png" width="70%">
+
 그럼 __colab__ 폴더로 가서 마우스 오른쪽 버튼을 클릭! __더보기->Colaboratory__를 추가줍니다. 만약 Colaboratory가 없다면 __연결할 앱 더보기__ 를 선택해서 Google Colaboratory를 연결합니다.
-
-<img align="middle" src="/image/posts/Trial/2018-04-11-Colab-setup/colab0.png" width="70%">
-
+<img align="middle" src="/image/posts/Trial/2018-04-11-Colab-setup/colab0-1.png" width="100%">
 
 
 ## Setting Google Colab!
@@ -34,15 +32,17 @@ Google Colab을 사용하기 위한 기본적은 준비사항에 대해 먼저 �
 자, 제대로 Colaboratory가 추가되었다면 그림과 같이 ipython notebook (ipynb), 노트북이 추가됩니다. 처음에는 Untitled.ipynb로 생성되는데 원하는 파일명으로 바꿔줍니다.
 <img align="middle" src="/image/posts/Trial/2018-04-11-Colab-setup/colab2.png" width="70%">
 
+
 그리고 GPU 및 Python version 설정을 위해서 __수정->노트설정__ 에서 Python version 및 GPU 사용을 선택합니다.
-<img align="middle" src="/image/posts/Trial/2018-04-11-Colab-setup/colab3.png" width="50%">
+<img align="middle" src="/image/posts/Trial/2018-04-11-Colab-setup/colab3.png" width="40%">
+
 
 ## Test Google Colab!
-그렇다면 몇 가지 Python code를 실행해봅니다. 각 block은 __ctrl+shift+enter__ 로 실행할 수 있습니다.
-<img align="middle" src="/image/posts/Trial/2018-04-11-Colab-setup/colab4.png" width="70%">
+그렇다면 몇 가지 Python code를 실행해봅니다. 각 block은 __shift+enter__ 로 실행할 수 있습니다.
+<img align="middle" src="/image/posts/Trial/2018-04-11-Colab-setup/colab4.png" width="100%">
 
 아래와 같이 기본직인 Tensorflow 예제도 바로 해볼 수 있습니다.
-<img align="middle" src="/image/posts/Trial/2018-04-11-Colab-setup/colab4-1.png" width="70%">
+<img align="middle" src="/image/posts/Trial/2018-04-11-Colab-setup/colab4-1.png" width="100%">
 
 ## Setting Pytorch & Google Drive
 ### Install Pytorch
@@ -64,7 +64,7 @@ accelerator = 'cu80' if path.exists('/opt/bin/nvidia-smi') else 'cpu'
 import torch
 torch.__version__
 ```
-<img align="middle" src="/image/posts/Trial/2018-04-11-Colab-setup/colab5.png" width="70%">
+<img align="middle" src="/image/posts/Trial/2018-04-11-Colab-setup/colab5.png" width="100%">
 
 
 ### Install Google Drive SDK
@@ -85,7 +85,7 @@ vcode = getpass.getpass()
 !echo {vcode} | google-drive-ocamlfuse -headless -id={creds.client_id} -secret={creds.client_secret}
 ```
 
-<img align="middle" src="/image/posts/Trial/2018-04-11-Colab-setup/colab6.png" width="70%">
+<img align="middle" src="/image/posts/Trial/2018-04-11-Colab-setup/colab6.png" width="100%">
 
 ### Mount Google Drive
 다음은 Google Drive를 서버에 마운트합니다. 개인이 가지고 있는 구글 드라이브의 데이터 및 코드를 사용하기 위함이죠. 여기선 drive폴더에 구글 드라이브의 root가 연동되게 됩니다. !ls drive를 하면 가장 상위 디렉토리의 내용이 나와야 하죠. 제대로 연동이 되었다면 이제 위에서 만들어두었던 __colab__, __dataset__ 폴더에 drive/colab 그리고 drive/dataset으로 접근이 가능합니다!
@@ -106,4 +106,4 @@ vcode = getpass.getpass()
 ```
 
 ## 마무리
-이번 포스트에서는 Google Colab을 셋업하는 방법을 살펴보았습니다. 제가 주로 사용하는 코드가 Pytorch이기 때문에 Pytorch기반의, 그리고 구글 드라이브를 연동해서 사용하는 방법을 알아보았습니다. 사실 제대로 사용하려면 더 다양한 기능을 알아야 하지만 우선 이번 포스트는 여기서 마무리하고, 중간중간 업데이트를 하도록 하겠습니다. 
+이번 포스트에서는 Google Colab을 셋업하는 방법을 살펴보았습니다. 제가 주로 사용하는 코드가 Pytorch이기 때문에 Pytorch기반의, 그리고 구글 드라이브를 연동해서 사용하는 방법을 알아보았습니다. 사실 제대로 사용하려면 더 다양한 기능을 알아야 하지만 우선 이번 포스트는 여기서 마무리하고, 중간중간 업데이트를 하도록 하겠습니다.
