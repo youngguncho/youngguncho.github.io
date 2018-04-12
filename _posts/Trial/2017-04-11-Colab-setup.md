@@ -10,7 +10,7 @@ description: >
 
 
 ## Google, Colab!
-구글 Colaboratory, Colab은 무엇인고 하니, 우선 제공되는 설명을 보아하면 __텍스트, 코드, 코드 출력을 하나의 공동작업 문서로 통합해주는 데이터 분석 도구입니다.__ 하고 표현하고 있습니다. 쉽게 이해하자면, __구글에서 제공하는 무료 딥러닝 클라우드 서비스__ 라고 이해할 수 있습니다. 즉, __Google Colab__은 jupyter 노트북 기반으로 딥러닝 서버를 이용할 수 있는 서비스이죠. 아래 그림과 같은 __Tesla K80 GPU__를 이용할 수 있으며, Python 언어 기반으로 기본적으로 [Tensorflow](https://www.tensorflow.org/) 및 numpy와 같은 라이브러리가 셋업되어 있지만 추가적으로 [Keras](https://keras.io/)나 [Pytorch](http://pytorch.org/)등의 다른 라이브러리도 설치하여 사용할 수 있습니다.
+구글 Colaboratory, Colab은 무엇인고 하니, 우선 제공되는 설명을 보아하면 __텍스트, 코드, 코드 출력을 하나의 공동작업 문서로 통합해주는 데이터 분석 도구입니다.__ 하고 표현하고 있습니다. 쉽게 이해하자면, __구글에서 제공하는 무료 딥러닝 클라우드 서비스__ 라고 이해할 수 있습니다. 즉, __Google Colab__ 은 jupyter 노트북 기반으로 딥러닝 서버를 이용할 수 있는 서비스이죠. 아래 그림과 같은 __Tesla K80 GPU__ 를 이용할 수 있으며, Python 언어 기반으로 기본적으로 [Tensorflow](https://www.tensorflow.org/) 및 numpy와 같은 라이브러리가 셋업되어 있지만 추가적으로 [Keras](https://keras.io/)나 [Pytorch](http://pytorch.org/)등의 다른 라이브러리도 설치하여 사용할 수 있습니다.
 
 <img align="middle" src="/image/posts/Trial/2018-04-11-Colab-setup/colab.png" width="70%">
 
@@ -23,7 +23,7 @@ Google Colab을 사용하기 위한 기본적은 준비사항에 대해 먼저 �
 <img align="middle" src="/image/posts/Trial/2018-04-11-Colab-setup/colab0.png" width="100%">
 
 
-그럼 __colab__ 폴더로 가서 마우스 오른쪽 버튼을 클릭! __더보기->Colaboratory__를 추가줍니다. 만약 Colaboratory가 없다면 __연결할 앱 더보기__ 를 선택해서 Google Colaboratory를 연결합니다.
+그럼 __colab__ 폴더로 가서 마우스 오른쪽 버튼을 클릭! __더보기->Colaboratory__ 를 추가줍니다. 만약 Colaboratory가 없다면 __연결할 앱 더보기__ 를 선택해서 Google Colaboratory를 연결합니다.
 <img align="middle" src="/image/posts/Trial/2018-04-11-Colab-setup/colab0-1.png" width="100%">
 
 
@@ -46,8 +46,8 @@ Google Colab을 사용하기 위한 기본적은 준비사항에 대해 먼저 �
 
 ## Setting Pytorch & Google Drive
 ### Install Pytorch
-Pytorch는 코드 블록에서 pip install을 통해 설치할 수 있습니다. 테스트 결과 기본 __pip3 install__로 Pytorch 0.3.1버전을 설치할 수 있는데, colab에서 제공하는 코드로 설치하면 0.3.0이 설치됩니다. (2018년 4월 11일 기준)
-설치는 아래의 default 코드나 Colab에서 제공하는 코드 중 하나를 실행하시면 됩니다. 참고로 __!__를 붙이면 Python 콘솔이 아닌 터미널에서 명령이 실행되는 모드입니다.
+Pytorch는 코드 블록에서 pip install을 통해 설치할 수 있습니다. 테스트 결과 기본 __pip3 install__ 로 Pytorch 0.3.1버전을 설치할 수 있는데, colab에서 제공하는 코드로 설치하면 0.3.0이 설치됩니다. (2018년 4월 11일 기준)
+설치는 아래의 default 코드나 Colab에서 제공하는 코드 중 하나를 실행하시면 됩니다. 참고로 __!__ 를 붙이면 Python 콘솔이 아닌 터미널에서 명령이 실행되는 모드입니다.
 
 ```python
 # Default Code
