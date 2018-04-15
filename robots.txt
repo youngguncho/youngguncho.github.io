@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: http://youngguncho.github.io/sitemap.xml

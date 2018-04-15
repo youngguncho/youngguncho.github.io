@@ -1,87 +1,123 @@
 # Hydejack
+[![Gem Version](https://badge.fury.io/rb/jekyll-theme-hydejack.svg)](https://badge.fury.io/rb/jekyll-theme-hydejack)
 
-Hydejack is a pretentious two-column [Jekyll](http://jekyllrb.com) theme, stolen by [`@qwtel`](https://twitter.com/qwtel) from [Hyde](http://hyde.getpoole.com). You could say it was.. [hydejacked](http://media3.giphy.com/media/makedRIckZBW8/giphy.gif).
+**Hydejack** is a Jekyll theme with JavaScript powers, combining the best of static sites and modern web apps.
+It features a suite of JavaScript that makes the page feel like an app, without sacrificing backwards-compatibility,
+page-load speed or SEO.
+
+> Your presence on the web — A [blog], a [portfolio] and a [resume].
+
+**Hydejack** aims to be the complete package for professionals on the web.
+It features a blog suitable for both prose and technical documentation,
+a showcase for your projects, and a resume that fits with the rest of the design.
+
+![Screenshot](https://qwtel.com/assets/img/projects/default.jpg)
+
+## Demo
+It's best to just [see it in action](https://qwtel.com/hydejack/).
 
 ## Features
-Unlike Hyde, it's very opinionated about how you are going to use it.
+Both versions include these features:
 
-Features include:
+* Full in-app page loading, powered by [hy-push-state]
+* A customizable sidebar that turns into a drawer menu on mobile, powered by [hy-drawer]
+* Advanced FLIP animations, inspired by Material Design
+* Good [Google PageSpeed Score][gpss][^3]
+* Higher *perceived speed* thanks to content pre-fetching
+* [Syntax highlighting][syntax], powered by [Rouge]
+* [LaTeX math blocks][latex], powered by [KaTeX]
+* Change the wording of built-in strings and possibly translate in other languages
+* Support for categories and tags
+* Built-in icons for many social networks
+* Simple and semantic HTML — can be viewed even with text-based browsers
+* Author section below each article and support for multiple authors
+* Progressive enhancement — sacrifice features, not content
+* Google Analytics and Google Fonts support
+* Disqus comments
+* Print layout — Used to render Hydejack's [PDF documentation][pdf]
+* Blog layout via `jekyll-paginate` (optional)
+* SEO meta tags via `jekyll-seo-tag` (optional)
+* Github avatars via `jekyll-avatar` (optional)
+* Gist support via `jekyll-gist` (optional)
 
-* Touch-enabled sidebar / drawer for mobile, including fallback when JS is disabled.
-* Github Pages compatible tag support based on [this post][tag].
-* Customizable link color and sidebar image, per-site, per-tag and per-post.
-* Optional author section at the bottom of each post.
-* Optional comment section powered by Disqus.
-* Layout for posts grouped by year
-* Wide array of social media icons on sidebar.
-* Math blocks via [KaTeX](https://khan.github.io/KaTeX/).
+## Documentation
+Hydejack is well documented. You can read the docs [on the Jekyll site][docs], or [on GitHub][wiki], or [download the PDF][pdf].
 
 ## Download
-Hydejack is developed on and hosted with GitHub. Head to the [GitHub repository](https://github.com/qwtel/hydejack) for downloads, bug reports, and feature requests.
+There are two versions of **Hydejack**: The *free version* includes basic blogging functionality,
+as did previous versions of the theme.
+The *PRO version* includes additional features for professionals:
+A [portfolio], a [resume] layout and a [welcome] page to feature your favorite projects and posts.
 
-## Sidebar
-I love the original Hyde theme, but unfortunately the layout isn't as great on small screens.
-Since the sidebar moves to the top, the user has to scroll down just to read the title of a blog post.
+This table details what is and isn't included in each respective version.
 
-By using a drawer component I was able to retain the original two column layout. It's possible to move the drawer via touch input (with the help of a little JavaScript).
+|                                     | Free                                   | PRO                                          |
+|:------------------------------------|:--------------------------------------:|:--------------------------------------------:|
+| Blog                                | &#x2714;                               | &#x2714;                                     |
+| [Features][feat]                    | &#x2714;                               | &#x2714;                                     |
+| [Portfolio] Layout                  |                                        | &#x2714;                                     |
+| [Resume] Layout                     |                                        | &#x2714;                                     |
+| [Welcome] Layout                    |                                        | &#x2714;                                     |
+| [Newsletter Box][news]              |                                        | &#x2714;                                     |
+| [Custom Forms][forms]               |                                        | &#x2714;                                     |
+| No Hydejack Branding                |                                        | &#x2714;                                     |
+| License                             | [GPL-3.0][license]                     | [PRO]                                        |
+| Source                              | [GitHub][src]                          | Included                                     |
+| Support[^1]                         | No                                     | No                                           |
+| Price                               | Free                                   | $29                                          |
+|                                     | [**Download**][kit]                    | [**Buy Now - $29**][buy] [^2]                |
+{:.stretch-table}
 
-Since the background image contributes to the feel of the page I'm letting it peek over the edge a bit. This also provides a hint to the user that an interaction is possible.
+[^1]: You MAY open an issue on GitHub, but no response and/or fix is guaranteed.
+      You understand that using Jekyll requires technical know-how, and is NOT comparable to Wordpress in terms of usability.
+      Please use the free version to confirm that Hydejack works for you.
+      For more, see the [PRO] license.
 
-## Manual
+[^2]: Transactions secured by [Stripe](https://stripe.com). Downloads handled by [Simple Goods](https://simplegoods.co/).  
 
-### Configuration
-You can configure important aspects of the theme via [`_config.yml`](https://github.com/qwtel/hydejack/blob/master/_config.yml). This includes:
+[^3]: Actual page load speed depends on your hosting provider, resolution of embedded images and usage of 3rd party plugins.  
 
-* the blog description in the sidebar
-* the (optional) author description and photo
-* default image and link color of the blog
-* the github and twitter usernames
-
-### How to Change the Image and Color of a Post
-In the manifest of a blog post, simply add an url as `image` and a CSS color as `color`:
-
-~~~yml
-layout: post
-title: Introducing Hydejack
-image: http://qwtel.com/hydejack/public/img/hyde.jpg
-color: '#949667'
+~~~
+ __  __                __                                     __
+/\ \/\ \              /\ \             __                    /\ \
+\ \ \_\ \   __  __    \_\ \      __   /\_\      __       ___ \ \ \/'\
+ \ \  _  \ /\ \/\ \   /'_` \   /'__`\ \/\ \   /'__`\    /'___\\ \ , <
+  \ \ \ \ \\ \ \_\ \ /\ \L\ \ /\  __/  \ \ \ /\ \L\.\_ /\ \__/ \ \ \\`\
+   \ \_\ \_\\/`____ \\ \___,_\\ \____\ _\ \ \\ \__/.\_\\ \____\ \ \_\ \_\
+    \/_/\/_/ `/___/> \\/__,_ / \/____//\ \_\ \\/__/\/_/ \/____/  \/_/\/_/
+                /\___/                \ \____/
+                \/__/                  \/___/
 ~~~
 
-### How to Add a New Tag
-Tags are possible, but they are not meant to be used #instagram #style: #food #goodfood #happy #happylife #didimentionfood #yougetthepoint. Each tag requires some setup work. I tend to think of it as categories that can be combined.
+[blog]: https://qwtel.com/hydejack/blog/
+[portfolio]: https://qwtel.com/hydejack/variations/
+[resume]: https://qwtel.com/hydejack/resume/
+[download]: https://qwtel.com/download/
+[welcome]: https://qwtel.com/hydejack/
+[forms]: https://qwtel.com/hydejack/forms-by-example/
 
-1.  Add an entry to `_data/tags.yml`, where the key represents a slug and provide at least a `name` value and optionally `image`, `color` and `description`.
+[feat]: https://qwtel.com/hydejack/#features
+[news]: https://qwtel.com/hydejack/#newsletter-subscription-box
+[syntax]: https://qwtel.com/hydejack/#syntax-highlighting
+[latex]: https://qwtel.com/hydejack/#latex-math-blocks
 
-    Example `/_data/tags.yml`:
+[license]: LICENSE.md
+[pro]: licenses/PRO.md
+[docs]: docs/7.5.0/index.md
 
-    ~~~yml
-    mytag:
-      name: My Tag
-    ~~~
+[kit]: https://github.com/qwtel/hydejack-starter-kit/archive/v7.5.0.zip
+[src]: https://github.com/qwtel/hydejack
+[git]: https://github.com/qwtel/hydejack-starter-kit
+[gem]: https://rubygems.org/gems/jekyll-theme-hydejack
+[buy]: https://app.simplegoods.co/i/AQTTVBOE
 
-2.  Make a new file in the `tag` folder, using the same name you've used as the key / slug and change the `tag` and `permalink` entries.
+[gpss]: https://developers.google.com/speed/pagespeed/insights/?url=https%3A%2F%2Fqwtel.com%2Fhydejack%2F
+[wiki]: https://github.com/qwtel/hydejack/blob/master/docs/7.5.0/index.md
+[pdf]: https://github.com/qwtel/hydejack/releases/download/v7.5.0/Documentation._.Hydejack.pdf
+[hy-push-state]: https://qwtel.com/hy-push-state/
+[hy-drawer]: https://qwtel.com/hy-drawer/
+[rouge]: http://rouge.jneen.net
+[katex]: https://khan.github.io/KaTeX/
+[tinyletter]: https://tinyletter.com/
 
-    Example `/tag/mytag.md`:
-
-    ~~~yml
-    layout: blog-by-tag
-    tag: mytag
-    permalink: /tag/mytag/
-    ~~~
-
-3.  Tag your blog posts using the `tags` key (color and image will only depend on the first tag).
-
-    ~~~yml
-    layout: post
-    title: Introducing My New Tag
-    tags: [mytag, othertag]
-    ~~~
-
-4. (optional) Add the tag to the sidebar, by adding it to `sidebar_tags` in `_config.yml`.
-   They will appear in the listed order.
-
-   ~~~yml
-   sidebar_tags: [mytag, othertag]
-   ~~~
-
-[tag]: http://www.minddust.com/post/tags-and-categories-on-github-pages/
+*[FLIP]: First-Last-Invert-Play. A coding technique to achieve performant page transition animations.

@@ -1,24 +1,24 @@
+<span class="sr-only">{{ site.data.strings.navigation | default:"Navigation" }}{{ site.data.strings.colon | default:":" }}</span>
 <ul>
-  {% for tag_key in site.sidebar_tags %}
-    {% assign tag = site.data.tags[tag_key] %}
-    <li>
-      <a class="sidebar-nav-item {% if page.tag == tag_key %}active{% endif %}" href="{{ site.baseurl }}/tag/{{ tag_key }}/">{{ tag.name }}</a>
-    </li>
-  {% endfor %}
-
-  {% comment %}
-    The code below dynamically generates a sidebar nav of pages with
-    `layout: page` in the front-matter. See readme for usage.
-  {% endcomment %}
-
-  {% assign pages_list = site.pages %}
-  {% for node in pages_list %}
-    {% if node.title != null %}
-      {% if node.layout == "page" %}
+  {% assign pages = site.pages | where: "menu", true %}
+  {% assign documents = site.documents | where: "menu", true %}
+  {% assign nodes = pages | concat: documents | sort: "order" %}
+  {% for node in nodes %}
+    {% unless node.redirect_to %}
       <li>
-        <a class="sidebar-nav-item {% if page.url == node.url %}active{% endif %}" href="{{ node.url | prepend:site.baseurl }}">{{ node.title }}</a>
+        <a
+          {% if forloop.first %}id="_navigation"{% endif %}
+          href="{{ node.url | relative_url }}"
+          class="sidebar-nav-item{% if page.url contains node.url %} active{% endif %}"
+          {% if path.rel %}rel="{{ node.rel }}"{% endif %}
+          >
+          {{ node.title }}
+        </a>
       </li>
-      {% endif %}
-    {% endif %}
+    {% else %}
+      <li>
+        <a href="{{ node.redirect_to }}" class="sidebar-nav-item external" >{{ node.title }}</a>
+      </li>
+    {% endunless %}
   {% endfor %}
 </ul>

@@ -1,40 +1,38 @@
 {% assign post = include.post %}
+{% assign link_title = include.link_title %}
 
-<article id="post-{{ post.id | slice: 1,9999 }}" class="post" role="article">
-  <h1 class="post-title">
-  {% if include.link_title %}<a href="{{ post.url | prepend:site.baseurl }}">{% endif %}
-    {{ post.title }}
-  {% if include.link_title %}</a>{% endif %}
-  </h1>
+<article id="post{{ post.id | replace:'/','-' }}" class="page post{% if link_title %} mb6{% endif %}" role="article">
+  <header>
+    <h1 class="post-title">
+      {% if link_title %}<a href="{{ post.url | relative_url }}" class="flip-title">{% endif %}
+        {{ post.title }}
+      {% if link_title %}</a>{% endif %}
+    </h1>
 
-  {% if post.tags.size > 0 %}
-  {% capture tags_content %}on {% endcapture %}
-  {% for post_tag in post.tags %}
-    {% assign tag = site.data.tags[post_tag] %}
-    {% if tag %}
-      {% capture tags_content_temp %}{{ tags_content }}<a href="{{ site.baseurl }}/tag/{{ post_tag }}/">{{ tag.name }}</a>{% if forloop.last == false %}<span>, </span>{% endif %}{% endcapture %}
-      {% assign tags_content = tags_content_temp %}
-    {% endif %}
-  {% endfor %}
+    <p class="post-date heading">
+      {% assign post_format = site.data.strings.date_formats.post | default:"%d %b %Y" %}
+      <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date:post_format }}</time>
+      {% assign category_start     = site.data.strings.category_start     | default:"in " %}
+      {% assign tag_start          = site.data.strings.tag_start          | default:"on " %}
+      {% assign category_separator = site.data.strings.category_separator | default:" / " %}
+      {% assign tag_separator      = site.data.strings.tag_separator      | default:", "  %}
+      {% include tag-list.html tags=post.categories meta=site.featured_categories start_with=category_start separator=category_separator %}
+      {% include tag-list.html tags=post.tags meta=site.featured_tags start_with=tag_start separator=tag_separator %}
+    </p>
+
+    {% include message.html text=post.description hide=page.hide_description %}
+  </header>
+
+  {% unless include.excerpt %}
+    {{ post.content }}
   {% else %}
-  {% assign tags_content = '' %}
-  {% endif %}
-
-  <div class="post-date">
-    <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%m/%d/%y" }}</time>
-    <span>{{ tags_content }}</span>
-  </div>
-
-  {% if post.description %}
-    {% comment %}
-      Adding the "message" class to the last (and usually only) paragraph of the description.
-    {% endcomment %}
-    {% capture desc %}{{ post.description }}{:.message}{% endcapture %}
-    {{ desc | markdownify }}
-  {% endif %}
-
-  <hr/>
-
-  {{ post.content }}
-
+    {{ post.excerpt }}
+    {% capture post_title %}<a class="heading flip-title" href="{{ post.url | relative_url }}">{{ post.title }}</a>{% endcapture %}
+    {% assign text = site.data.strings.continue_reading | default:"Continue reading <!--post_title-->" %}
+    <footer>
+      <p class="read-more">
+        {{ text | replace:"<!--post_title-->", post_title }}
+      </p>
+    </footer>
+  {% endunless %}
 </article>

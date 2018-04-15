@@ -2,7 +2,7 @@
 layout: post
 title:  "Stereo Visual Odometry C++ implementation!"
 date:   2018-01-15 02:07:58 +0900
-tags: [Self-study]
+tags: [self-study]
 description: >
   Stereo Visual Odometry (C++ version) [작성중]
 ---
@@ -48,7 +48,7 @@ $$
 실제로 Motion을 구하기 위해서는 Cost function에서 Error term을 현재 motion에 대해서 Linearize하고 Jocobian을 구해서 motion을 delta만큼 업데이트 하는 과정을 반복해서 수행하야한다. 즉, 함수최적화에서 Nonlinear Least Square 문제를 푸는 것과 같다. 일반적인 함수최적화 문제에서 모델 파라미터가 모션 정보로 볼 수 있다. Nonlinear least square 문제는 여러가지 방법으로 풀 수 있는데 SLAM에서 주로 사용하는 방법은 [Gauss-Newton](https://en.wikipedia.org/wiki/Gauss%E2%80%93Newton_algorithm)이나 [Levenberg-Marquardt](https://en.wikipedia.org/wiki/Levenberg%E2%80%93Marquardt_algorithm)을 들 수 있다. 또한 이미 많은 오픈소스 Back-end library등이 공개 되어 있는데, 그 중 유명한 것은 [ISAM](http://people.csail.mit.edu/kaess/isam/), [G2O](https://github.com/RainerKuemmerle/g2o), 그리고 [GTSAM](https://bitbucket.org/gtborg/gtsam)이 있다. 이번 포스트에서는 이 중 GTSAM을 사용하여 코드를 구현하였다! (이러한 경우 실제 파라미터 업데이트는 라이브러리에서 구현되어 있으므로 사용자는 measurement 정의만 잘 해주면 쉽게 모션을 구할 수 있다.)
 
 ## Result and Conclusion
-다음은 Two-view BA를 통해서 구한 frame간 Relative Pose를 Compose 하여 Vehicle Trajectory를 구한 결과이다. Initial frame을 (0, 0, 0)로 하여 Compose를 하면 i번째 frame의 Vehicle Pose는 $$\mathbf{T}_{0,i}=\mathbf{T}_{0,1}\mathbf{T}_{1,2} \cdots \mathbf{T}_{i-2,i-1}\mathbf{T}_{i-1,i}$$ 이 식과 같은 Motion composition을 통해서 구할 수 있다. Test는 KITTI odometry benchmark dataset에서 00번과 06번 시퀀스에서 진행하였다. Odometry benchmark의 Ground truth와 같이 깔끔하게 Path가 나오진 않았지만 Rotation에서 부분적으로 Bias가 나온 것을 제외하고는, 그리기 Loop closure, Keyframe없이 단순히 Two-view만 이어 붙인 것 치고는 생각보다는 준수한 결과가 나온것을 확인할 수 있다.  
+다음은 Two-view BA를 통해서 구한 frame간 Relative Pose를 Compose 하여 Vehicle Trajectory를 구한 결과이다. Initial frame을 (0, 0, 0)로 하여 Compose를 하면 i번째 frame의 Vehicle Pose는 $$\mathbf{T}_{0,i}=\mathbf{T}_{0,1}\mathbf{T}_{1,2} \cdots \mathbf{T}_{i-2,i-1}\mathbf{T}_{i-1,i}$$ 이 식과 같은 Motion composition을 통해서 구할 수 있다. Test는 KITTI odometry benchmark dataset에서 00번과 06번 시퀀스에서 진행하였다. Odometry benchmark의 Ground truth와 같이 깔끔하게 Path가 나오진 않았지만 Rotation에서 부분적으로 Bias가 나온 것을 제외하고는, 그리기 Loop closure, Keyframe없이 단순히 Two-view만 이어 붙인 것 치고는 생각보다는 준수한 결과가 나온것을 확인할 수 있다.
 
 <img align="middle" src="/image/posts/Self-study/2017-12-25-Stereo-visual-odometry-cpp/trajectory_00_06.png" width="80%">
 

@@ -1,47 +1,68 @@
-(function(w, d) {
-  function stdOnEnd(script, cb) {
-    script.onload = function () {
-      this.onerror = this.onload = null;
-      cb(null, script);
-    };
+// Copyright (c) 2017 Florian Klampfer <https://qwtel.com/>
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-    script.onerror = function () {
-      this.onerror = this.onload = null;
-      cb(new Error('Failed to load ' + this.src), script);
-    };
-  }
+// Compress via uglify:
+// uglifyjs load-js-deferred.js -c -m > load-js-deferred.min.js
+function stdOnEnd(script, cb) {
+  script.onload = function () {
+    this.onerror = this.onload = null;
+    cb(null, script);
+  };
 
-  function ieOnEnd(script, cb) {
-    script.onreadystatechange = function () {
-      if (this.readyState != 'complete' && this.readyState != 'loaded') return;
-      this.onreadystatechange = null;
-      cb(null, script);
-    };
-  }
+  script.onerror = function () {
+    this.onerror = this.onload = null;
+    cb(new Error('Failed to load ' + this.src), script);
+  };
+}
 
-  w.isReady = false;
-  w.loadJSDeferred = function(src, cb) {
-    function loadJS() {
-      w.isReady = true;
+function ieOnEnd(script, cb) {
+  script.onreadystatechange = function () {
+    if (this.readyState != 'complete' && this.readyState != 'loaded') return;
+    this.onreadystatechange = null;
+    cb(null, script);
+  };
+}
 
-      var script = d.createElement('script');
-      script.src = src;
+window.setRelStylesheet = function (id) {
+  var link = document.getElementById(id);
+  function set() { this.rel = 'stylesheet'; }
+  if (link.addEventListener) link.addEventListener('load', set, false);
+  else link.onload = set;
+};
 
-      if (cb) {
-        ('onload' in script ? stdOnEnd : ieOnEnd)(script, cb);
+window._loaded = false;
+window.loadJSDeferred = function(src, cb) {
+  function loadJS() {
+    window._loaded = true;
 
-        if (!script.onload) {
-          stdOnEnd(script, cb);
-        }
+    var script = document.createElement('script');
+    script.src = src;
+
+    if (cb) {
+      ('onload' in script ? stdOnEnd : ieOnEnd)(script, cb);
+
+      if (!script.onload) {
+        stdOnEnd(script, cb);
       }
-
-      var ref = d.getElementsByTagName('script')[0];
-      ref.parentNode.insertBefore(script, ref);
     }
 
-    if (w.isReady) loadJS();
-    else if (w.addEventListener) w.addEventListener("load", loadJS, false);
-    else if (w.attachEvent) w.attachEvent("onload", loadJS);
-    else w.onload = loadJS;
+    var ref = document.scripts[0];
+    ref.parentNode.insertBefore(script, ref);
   }
-}(window, document));
+
+  if (window._loaded) loadJS();
+  else if (window.addEventListener) window.addEventListener('load', loadJS, false);
+  else window.onload = loadJS;
+};

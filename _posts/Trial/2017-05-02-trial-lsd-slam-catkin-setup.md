@@ -2,7 +2,7 @@
 layout: post
 title:  "LSD-SLAM with ROS kinetic + Ubuntu 16.04"
 date:   2017-05-02 22:07:58 +0900
-tags: [Trial]
+tags: [trial]
 description: >
   lsd slam을 ROS kinetic + Ubuntu 16.04에서 cakin으로 빌드하기 위한 구성
 ---

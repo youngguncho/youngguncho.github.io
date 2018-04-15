@@ -2,7 +2,7 @@
 layout: post
 title:  "Husky setup for ROS kinetic"
 date:   2018-01-24 02:07:58 +0900
-tags: [Trial]
+tags: [trial]
 description: >
   lsd slam을 ROS kinetic + Ubuntu 16.04에서 cakin으로 빌드하기 위한 구성 (작성중, 그림추가 필요)
 ---

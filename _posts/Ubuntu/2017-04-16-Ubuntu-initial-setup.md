@@ -2,7 +2,7 @@
 layout: post
 title:  "Setup Graphic driver and Cuda"
 date:   2017-04-16 22:07:58 +0900
-tags: [Ubuntu]
+tags: [ubuntu]
 description: >
     Ubuntu 환경에서 그래픽 카드와 쿠다 설치에 대한 포스트
 

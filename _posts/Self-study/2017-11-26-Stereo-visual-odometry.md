@@ -2,7 +2,7 @@
 layout: post
 title:  "Stereo Visual Odometry Scratch!"
 date:   2017-11-26 02:07:58 +0900
-tags: [Self-study]
+tags: [self-study]
 description: >
   Stereo Visual Odometry
 ---

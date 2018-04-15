@@ -2,7 +2,7 @@
 layout: post
 title:  "ORB Slam 2 ROS setup"
 date:   2017-03-02 22:07:58 +0900
-tags: [Trial]
+tags: [trial]
 description: >
   ROS에서 사용하기 위한 ORB-SLAM2 setup
 ---

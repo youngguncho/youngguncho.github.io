@@ -2,7 +2,7 @@
 layout: post
 title:  "Add tags to the blog and posts"
 date:   2017-04-16 02:07:58 +0900
-tags: [Blog]
+tags: [blog]
 description: >
   Hydejack Theme Blog에서 포스트와 Tag 관리하는 방법
 ---
