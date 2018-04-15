@@ -3,6 +3,7 @@ layout: post
 title:  "구글 Colaboratory, Colab에 Pytorch 셋업하기!"
 date:   2018-04-11 02:07:58 +0900
 tags: [trial]
+author: ygcho
 description: >
   구글 Colaboratory, Colab에 Pytorch 셋업하기!
 ---

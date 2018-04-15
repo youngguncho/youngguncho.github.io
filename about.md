@@ -4,5 +4,5 @@ layout: about
 title:  About
 author: ygcho
 menu: true
-order: 10
+order: 8
 ---
