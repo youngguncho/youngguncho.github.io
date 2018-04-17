@@ -47,6 +47,7 @@ author:
   picture:             /image/about/Wall_e_and_eve_128.png
   # Used by `jekyll-seo-tag`:
   github:             youngguncho
+  
 
 # This text will appear in a `<small>` tag in the footer of every page.
 copyright:             © 2017. All rights reserved.
