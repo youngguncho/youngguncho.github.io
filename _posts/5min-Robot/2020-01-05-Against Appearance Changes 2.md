@@ -1,4 +1,4 @@
----
+ ---
 layout: post
 title:  "[5분 로봇] Long-term Autonomy - Against appearance changes2"
 date:   2020-01-05 02:07:58 +0900
@@ -11,11 +11,11 @@ description: >
 # [5분 로봇] Against Appearance Changes 2
 
 [https://www.youtube.com/watch?v=s8XV1Y6opig&t=24s](https://www.youtube.com/watch?v=s8XV1Y6opig&t=24s)
-Oxford의 Paul Newman 교수님 연구실의 GAN을 이용항 appearance change에 대처하는 연구
 
-![2020-01-05-Against Appearance Changes 2/Untitled.png](5%20Against%20Appearance%20Changes%202/Untitled.png)
+> Oxford의 Paul Newman 교수님 연구실의 GAN을 이용항 appearance change에 대처하는 연구
 
-예전 ICRA 2018에서 발표할때 사용했던 슬라이드
+![2020-01-05-Against Appearance Changes 2/Untitled.png](2020-01-05-Against Appearance Changes 2/Untitled.png)
+> 예전 ICRA 2018에서 발표할때 사용했던 슬라이드
 
 앞의 포스팅과 마찬가지로 계절이나 날시 변화와 같은 appearance change에 대응하는 가장 직관적인 방법은 바로 Image-to-image translation을 이용해서 입력 영상을 원하는 appearance를 가지도록 변화시키는 것이다.
 
