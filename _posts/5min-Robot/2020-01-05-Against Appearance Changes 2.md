@@ -14,7 +14,7 @@ description: >
 
 _Oxford의 Paul Newman 교수님 연구실의 GAN을 이용항 appearance change에 대처하는 연구_
 
-<img align="middle" src="/_posts/5min-Robot/2020-01-05-Against Appearance Changes 2/Untitled.png" width="70%">
+<img align="middle" src="/image/posts/5min-Robot/2020-01-05/Untitled.png" width="70%">
 
 _예전 ICRA 2018에서 발표할때 사용했던 슬라이드_
 
