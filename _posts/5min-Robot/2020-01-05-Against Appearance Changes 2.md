@@ -31,7 +31,7 @@ description: >
 
 [How to Train a CAT: Learning Canonical Appearance Transformations for Direct Visual Localization Under Illumination Change](https://arxiv.org/abs/1709.03009)
 
-[IRAP | Main / Publication](https://irap.kaist.ac.kr/index.php/Main/Publication?action=bibentry&bibfile=ref.bib&bibref=ycho-2018-icraws)
+[DejavuGAN: Multi-temporal Image Translation toward Long-term Robot Autonomy](https://irap.kaist.ac.kr/index.php/Main/Publication?action=bibentry&bibfile=ref.bib&bibref=ycho-2018-icraws)
 
 - CVPR에 소개된 관련논문
 
