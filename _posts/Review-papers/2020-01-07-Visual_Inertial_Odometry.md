@@ -23,7 +23,8 @@ Camera와 IMU는 다른 인식  센서에 비해 가격이 매우 합리적이�
 
 Camera는 camera sensor에 들어오는 빛을 일정시간동안 취득하여 외부환경을 rich하게 획득하는 센서라고 하면, IMU는 반대로 비교적 외부환경에 대한 영향없이 센서에 가해지는 움직임 (즉, 스스로의 모션)을 검출하는 특성을 가지고 있다. 이러한 센서적 특성으로 인해 카메라는 저속의 움직임에서 비교적 정확한 모션을 검출하는데 유리하나 조명, 속도 등에 큰 영향을 받으며 반대로 IMU는 빠른 모션을 검출할 수 있으나, 미소한 모션에 대해서는 bias나 noise로 인해서 계속 drift가 누적되는 문제가 발생한다. 이러한 상보적인 센서들을 잘 융합하면 최소한의 조합으로 정확하고 정밀한 모션 검출이 가능하다.
 
-![Visual%20Inertial%20Odometry/Untitled.png](2020-01-07-Visual_Inertial_Odometry/Untitled.png)
+<!-- ![Visual%20Inertial%20Odometry/Untitled.png](2020-01-07-Visual_Inertial_Odometry/Untitled.png) -->
+<img align="middle" src="/_posts/Review-papers/2020-01-07-Visual_Inertial_Odometry/Untitled.png" width="90%">
 
 보통 위 그림처럼 센서가 구성되는데, IMU는 1000Hz에 가까운 속도로 연속적인 데이터를 제공하며, 카메라는 일반적으로 100 Hz미만의 속도로 데이터를 제공한다. 대신 카메라는 외부 환경 정보를 취득할 수 있다.
 
