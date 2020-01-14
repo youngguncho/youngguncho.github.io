@@ -7,7 +7,7 @@ description: >
   장기적 자율주행과 SLAM
 ---
 
-# Against Appearance Changes 3
+# [5분 로봇] Against Appearance Changes 3
 
 U. Toronto에서 공개한 RA-L논문이다. 기존의 How to train a cat이란 논문으로 appearance change 상황에서 visual localization 성능을 높이는 연구를 진행했었는데, 이 논문도 마찬가지로 낮-밤과 같이 다른 환경에서 visual localization 성능을  높이는 방향에 대해서 연구하였다.
 
